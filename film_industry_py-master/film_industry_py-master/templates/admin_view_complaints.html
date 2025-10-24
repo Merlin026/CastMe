@@ -1,0 +1,53 @@
+{% include 'admin_header.html' %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="text-center">Complaints</h2>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped align-middle">
+                            <thead class="table-dark">
+                                <tr>
+									<th>Date</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Complaints</th>
+                                    
+                                    <th>Reply</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in data['complaints'] %}
+                                <tr>
+									<td>{{ row['date_time'] }}</td>
+                                    <td>{{ row['first_name'] }} {{ row['last_name'] }}</td>
+                                    <td>{{ row['email'] }}</td>
+                                    <td>{{ row['phone'] }}</td>
+                                    <td>{{ row['complaint_description'] }}</td>
+                                    
+                                    
+                                    {% if row['reply_description'] == 'pending' %}
+                                    <td>
+                                        <a href="?action=reply&id={{ row['complaint_id'] }}" class="btn btn-info btn-sm">
+                                            Reply
+                                        </a>
+                                    </td>
+                                    {% else %}
+                                    <td>{{ row['reply_description'] }}</td>
+                                    {% endif %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'admin_footer.html' %}

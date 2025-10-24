@@ -1,0 +1,23 @@
+{% extends 'member_index.html' %}
+{% block body %}
+<body>
+	<form method="post">
+		<table align="center" class="table" style="width: 500px;">
+			<h1 align="center">Mentorship</h1>
+			<tr>
+				<th>Title</th>
+				<th>Description</th>
+				<th>Date</th>
+			</tr>
+			{% for row in data['notification'] %}
+			<tr>
+				<td>{{row['title']}}</td>
+				<td>{{row['description']}}</td>
+				<td>{{row['date']}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</form>
+
+</body>
+{% endblock %}
